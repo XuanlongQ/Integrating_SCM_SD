@@ -1,3 +1,4 @@
+import numpy as np
 from lib import utils_fun,middleware,remain
 
 Yamlcon = utils_fun.YamlConfig()
@@ -48,3 +49,12 @@ if __name__ == "__main__":
     print("evaluation and potency: ", cos_sim_e_p)
     print("warmth and evaluation: ", cos_sim_w_e)
     print("competent and potency: ", cos_sim_c_p)
+    
+    dims_scm = np.vstack((dir_warmth,dir_competent))
+    orthogonal_dims = remain.orthogonal_dimensions(dims_scm)
+    print(orthogonal_dims[0])
+    project_w_c = middleware.new_semantic(orthogonal_dims)
+    print(project_w_c)
+    # dims_sd = np.vstack((dir_evaluation,dir_potency))
+    
+    
