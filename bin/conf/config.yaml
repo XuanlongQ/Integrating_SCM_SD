@@ -8,5 +8,7 @@ SD:
   potency: "Integrating_SCM_SD/bin/doc/SD_potency_pairs.csv"
   activity:
 
+Jenkins:
+  pairs: "Integrating_SCM_SD/bin/doc/Jenkins_pairs.csv"
 
 
