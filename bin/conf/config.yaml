@@ -4,9 +4,12 @@ SCM:
 
 
 SD:
-  evaluation: "Integrating_SCM_SD/bin/doc/SD_evaluation_pairs.csv"
-  potency: "Integrating_SCM_SD/bin/doc/SD_potency_pairs.csv"
-  activity:
+  activity: "Integrating_SCM_SD/bin/doc/osgood_01_activity.csv"
+  evaluation: "Integrating_SCM_SD/bin/doc/osgood_01_evaluation.csv"
+  potency: "Integrating_SCM_SD/bin/doc/osgood_01_potency.csv"
+  
 
+Jenkins:
+  pairs: "Integrating_SCM_SD/bin/doc/Jenkins_pairs.csv"
 
 
