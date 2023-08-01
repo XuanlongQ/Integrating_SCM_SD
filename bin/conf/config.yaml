@@ -12,4 +12,6 @@ SD:
 Jenkins:
   pairs: "Integrating_SCM_SD/bin/doc/Jenkins_pairs.csv"
 
+Osgood:
+  50_pairs: "Integrating_SCM_SD/bin/doc/osgood_50.csv"
 
