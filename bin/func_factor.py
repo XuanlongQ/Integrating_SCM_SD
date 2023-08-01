@@ -32,7 +32,8 @@ def create_matrix(ant_pairs_Jenkins):
             
             
         except Exception as err:
-            print("some thing wrong, err")
+            print("Can not find pair:",Antonym_key)
+            print("some thing wrong:",err)
             
     print("total pairs are: ",ant_pairs_Jenkins.shape[0])
     print("the counted pairs are:", count_pairs)
@@ -41,7 +42,7 @@ def create_matrix(ant_pairs_Jenkins):
 
 if __name__ == "__main__":
     # Get the path
-    filep = data_yaml["Osgood"]["50_pairs"]
+    filep = data_yaml["Trust"]["20_paris"]
     ant_pairs_filep = utils_fun.get_antonym_pairs(filep)
     data = create_matrix(ant_pairs_filep)
     df = pd.DataFrame(data, index=["V" + str(i) for i in range(1, 301)])

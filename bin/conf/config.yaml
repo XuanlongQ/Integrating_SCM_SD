@@ -2,7 +2,6 @@ SCM:
   warmth_pairs: "Integrating_SCM_SD/bin/doc/SCM_warmth_paris.csv" # system
   competent_pairs: "Integrating_SCM_SD/bin/doc/SCM_competent_pairs.csv" # system
 
-
 SD:
   activity: "Integrating_SCM_SD/bin/doc/osgood_01_activity.csv"
   evaluation: "Integrating_SCM_SD/bin/doc/osgood_01_evaluation.csv"
@@ -15,3 +14,5 @@ Jenkins:
 Osgood:
   50_pairs: "Integrating_SCM_SD/bin/doc/osgood_50.csv"
 
+Trust:
+  20_paris: "Integrating_SCM_SD/bin/doc/trustworthiness.csv"
