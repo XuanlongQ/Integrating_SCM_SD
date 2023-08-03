@@ -42,7 +42,7 @@ def create_matrix(ant_pairs_Jenkins):
 
 if __name__ == "__main__":
     # Get the path
-    filep = data_yaml["Trust"]["20_paris"]
+    filep = data_yaml["SCM"]["All_pairs"]
     ant_pairs_filep = utils_fun.get_antonym_pairs(filep)
     data = create_matrix(ant_pairs_filep)
     df = pd.DataFrame(data, index=["V" + str(i) for i in range(1, 301)])
