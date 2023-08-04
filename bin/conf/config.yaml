@@ -1,7 +1,7 @@
 SCM:
   warmth_pairs: "Integrating_SCM_SD/bin/doc/SCM_warmth_paris.csv" # system
   competent_pairs: "Integrating_SCM_SD/bin/doc/SCM_competent_pairs.csv" # system
-
+  All_pairs: "Integrating_SCM_SD/bin/doc/SCM_all_pairs.csv"
 SD:
   activity: "Integrating_SCM_SD/bin/doc/osgood_01_activity.csv"
   evaluation: "Integrating_SCM_SD/bin/doc/osgood_01_evaluation.csv"
