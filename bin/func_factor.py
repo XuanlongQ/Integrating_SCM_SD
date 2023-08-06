@@ -1,7 +1,7 @@
 import pandas as pd
 from lib import utils_fun
 from lib.middleware import word2vec_fun
-from lib.remain import cosine_similarity
+
 
 Yamlcon = utils_fun.YamlConfig()
 data_yaml = Yamlcon.get_yaml()
@@ -41,11 +41,6 @@ def create_matrix(ant_pairs_Jenkins):
     return word_dims
 
 
-def calculate_each_two(vectors):
-    for i in range(len(vectors)):
-        for j in range(i+1, len(vectors)):
-            similarity = cosine_similarity([vectors[i]], [vectors[j]])[0][0]
-            print(f"The cosine similarity between vector {i+1} and vector {j+1} is {similarity:.2f}")
 
 def write_to_dta(filep):
     """write vector of data to .dta format and do transpose
@@ -70,5 +65,5 @@ def write_to_dta(filep):
 if __name__ == "__main__":
     # Get the path
     filep = data_yaml["Reduction"]["SCM_warmth"]
-    
-    # write_to_dta(filep)
+    print(filep)
+    write_to_dta(filep)
