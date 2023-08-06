@@ -14,6 +14,8 @@ if __name__ == "__main__":
     potency_pairs_path = data_yaml["SD"]["potency"]
     activity_pairs_path = data_yaml["SD"]["activity"]
     
+    trustworthy_pairs_path = data_yaml["Reduction"]["Trustworthy"]
+    
     # SCM dimensions
     ant_pairs_warmth = utils_fun.get_antonym_pairs(warmth_pairs_path)
     ant_pairs_competent = utils_fun.get_antonym_pairs(competent_pairs_path)
@@ -21,6 +23,7 @@ if __name__ == "__main__":
     ant_pairs_evaluation = utils_fun.get_antonym_pairs(evaluation_pairs_path)
     ant_pairs_potency = utils_fun.get_antonym_pairs(potency_pairs_path)
     ant_pairs_activity = utils_fun.get_antonym_pairs(activity_pairs_path)
+    ant_pairs_trustworthy = utils_fun.get_antonym_pairs(trustworthy_pairs_path)
     
     # filter pairs, condition cossim < 0.5
     # warm_pair = middleware.filter_pairs(ant_pairs_warmth)
@@ -37,6 +40,11 @@ if __name__ == "__main__":
     dir_evaluation = utils_fun.build_dimensions(ant_pairs_evaluation)
     dir_potency = utils_fun.build_dimensions(ant_pairs_potency)
     dir_activity = utils_fun.build_dimensions(ant_pairs_activity)
+    dir_trustworthy = utils_fun.build_dimensions(ant_pairs_trustworthy)
+    
+    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
+    from comparison_dimensions import heat_map
+    heat_map(vectors)
     
     # calcute cossim
     cos_sim_w_c = remain.cosine_similarity(dir_warmth,dir_competent)
