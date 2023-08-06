@@ -16,3 +16,11 @@ Osgood:
 
 Trust:
   20_paris: "Integrating_SCM_SD/bin/doc/trustworthiness.csv"
+
+Reduction:
+  SCM_warmth: "Integrating_SCM_SD/bin/doc/reduction_pairs/scm_warmth.csv"
+  SCM_competent: "Integrating_SCM_SD/bin/doc/reduction_pairs/scm_competent.csv"
+  Osgood_evaluation: "Integrating_SCM_SD/bin/doc/reduction_pairs/osgood_evaluation.csv"
+  Osgood_potency: "Integrating_SCM_SD/bin/doc/reduction_pairs/osgood_potency.csv"
+  Osgood_activity: "Integrating_SCM_SD/bin/doc/reduction_pairs/osgood_activity.csv"
+  Trustworthy: "Integrating_SCM_SD/bin/doc/reduction_pairs/trustworthy.csv"
