@@ -14,7 +14,7 @@ if __name__ == "__main__":
     potency_pairs_path = data_yaml["SD"]["potency"]
     activity_pairs_path = data_yaml["SD"]["activity"]
     
-    trustworthy_pairs_path = data_yaml["Reduction"]["Trustworthy"]
+    trustworthy_pairs_path = data_yaml["Trust"]["20_paris"]
     
     # SCM dimensions
     ant_pairs_warmth = utils_fun.get_antonym_pairs(warmth_pairs_path)
