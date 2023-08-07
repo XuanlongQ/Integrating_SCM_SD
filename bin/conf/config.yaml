@@ -1,11 +1,11 @@
 SCM:
-  warmth_pairs: "Integrating_SCM_SD/bin/doc/SCM_warmth_paris.csv" # system
-  competent_pairs: "Integrating_SCM_SD/bin/doc/SCM_competent_pairs.csv" # system
+  warmth_pairs: "Integrating_SCM_SD/bin/doc/original_pairs/SCM_warmth_paris.csv" # system
+  competent_pairs: "Integrating_SCM_SD/bin/doc/original_pairs/SCM_competent_pairs.csv" # system
   All_pairs: "Integrating_SCM_SD/bin/doc/SCM_all_pairs.csv"
 SD:
-  activity: "Integrating_SCM_SD/bin/doc/osgood_01_activity.csv"
-  evaluation: "Integrating_SCM_SD/bin/doc/osgood_01_evaluation.csv"
-  potency: "Integrating_SCM_SD/bin/doc/osgood_01_potency.csv"
+  activity: "Integrating_SCM_SD/bin/doc/original_pairs/osgood_activity.csv"
+  evaluation: "Integrating_SCM_SD/bin/doc/original_pairs/osgood_evaluation.csv"
+  potency: "Integrating_SCM_SD/bin/doc/original_pairs/osgood_potency.csv"
   
 
 Jenkins:
@@ -24,3 +24,7 @@ Reduction:
   Osgood_potency: "Integrating_SCM_SD/bin/doc/reduction_pairs/osgood_potency.csv"
   Osgood_activity: "Integrating_SCM_SD/bin/doc/reduction_pairs/osgood_activity.csv"
   Trustworthy: "Integrating_SCM_SD/bin/doc/reduction_pairs/trustworthy.csv"
+
+Dir:
+  original_pairs: "Integrating_SCM_SD/bin/doc/original_pairs/"
+  reduction_pairs: "Integrating_SCM_SD/bin/doc/reduction_pairs/"

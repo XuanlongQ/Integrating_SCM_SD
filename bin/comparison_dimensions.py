@@ -72,5 +72,17 @@ if __name__ == "__main__":
     
     
     ##  plot the result
-    vectors = np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy])
-    heat_map(vectors)
+    # vectors = np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy])
+    # heat_map(vectors)
+    import numpy as np
+    from sklearn.manifold import TSNE
+    from sklearn.manifold import TSNE
+    import matplotlib.pyplot as plt
+
+    X = np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy])
+    X_embedded = TSNE(n_components=2, perplexity=2).fit_transform(X)
+    print(X_embedded)
+    plt.figure()
+    plt.scatter(X_embedded[:,0],X_embedded[:,1])
+
+    plt.show()
