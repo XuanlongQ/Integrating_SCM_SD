@@ -15,7 +15,7 @@ Osgood:
   50_pairs: "Integrating_SCM_SD/bin/doc/osgood_50.csv"
 
 Trust:
-  20_paris: "Integrating_SCM_SD/bin/doc/trustworthiness.csv"
+  20_paris: "Integrating_SCM_SD/bin/doc/original_pairs/trustworthiness.csv"
 
 Reduction:
   SCM_warmth: "Integrating_SCM_SD/bin/doc/reduction_pairs/scm_warmth.csv"
@@ -28,3 +28,12 @@ Reduction:
 Dir:
   original_pairs: "Integrating_SCM_SD/bin/doc/original_pairs/"
   reduction_pairs: "Integrating_SCM_SD/bin/doc/reduction_pairs/"
+
+GPT:
+  gpt_warmth: "Integrating_SCM_SD/bin/doc/gpt_pairs/gpt_warmth.csv"
+  gpt_competent: "Integrating_SCM_SD/bin/doc/gpt_pairs/gpt_competent.csv"
+
+FINAL:
+  mixed_warmth: "Integrating_SCM_SD/bin/doc/final_pairs/mixed_warmth.csv"
+  mixed_competent: "Integrating_SCM_SD/bin/doc/final_pairs/mixed_competent.csv"
+  

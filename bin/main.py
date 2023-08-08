@@ -8,8 +8,8 @@ data_yaml = Yamlcon.get_yaml()
 
 if __name__ == "__main__":
     # Get the path
-    warmth_pairs_path = data_yaml["SCM"]["warmth_pairs"]
-    competent_pairs_path = data_yaml["SCM"]["competent_pairs"]
+    warmth_pairs_path = data_yaml["FINAL"]["mixed_warmth"]
+    competent_pairs_path = data_yaml["FINAL"]["mixed_competent"]
     evaluation_pairs_path = data_yaml["SD"]["evaluation"]
     potency_pairs_path = data_yaml["SD"]["potency"]
     activity_pairs_path = data_yaml["SD"]["activity"]
