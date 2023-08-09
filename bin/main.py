@@ -34,8 +34,8 @@ def run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant
     
 if __name__ == "__main__":
     # Get the path
-    warmth_pairs_path = data_yaml["FINAL"]["mixed_warmth"]
-    competent_pairs_path = data_yaml["FINAL"]["mixed_competent"]
+    warmth_pairs_path = data_yaml["SCM"]["warmth_pairs"]
+    competent_pairs_path = data_yaml["SCM"]["competent_pairs"]
     evaluation_pairs_path = data_yaml["SD"]["evaluation"]
     potency_pairs_path = data_yaml["SD"]["potency"]
     activity_pairs_path = data_yaml["SD"]["activity"]
