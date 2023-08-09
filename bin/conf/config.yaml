@@ -37,3 +37,6 @@ FINAL:
   mixed_warmth: "Integrating_SCM_SD/bin/doc/final_pairs/mixed_warmth.csv"
   mixed_competent: "Integrating_SCM_SD/bin/doc/final_pairs/mixed_competent.csv"
   
+Model_path:
+  mec: "mce/vectors.txt"
+  google_news: "css_word_embedding/stereotype/GoogleNews-vectors-negative300.bin"
