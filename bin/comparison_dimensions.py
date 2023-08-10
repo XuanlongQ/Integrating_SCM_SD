@@ -71,6 +71,6 @@ if __name__ == "__main__":
     # calculate_each_two(vectors)
     
     
-    ##  plot the result
+    #  plot the result
     vectors = np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy])
     heat_map(vectors)
