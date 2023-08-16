@@ -31,11 +31,24 @@ def run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant
     heat_map(vectors)
     # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
     print ("Google Word2Vec well done!")
+
+def run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy):
+    dir_warmth = utils_fun.build_dimensions_glove(ant_pairs_warmth)
+    dir_competent = utils_fun.build_dimensions_glove(ant_pairs_competent)
+    dir_evaluation = utils_fun.build_dimensions_glove(ant_pairs_evaluation)
+    dir_potency = utils_fun.build_dimensions_glove(ant_pairs_potency)
+    dir_activity = utils_fun.build_dimensions_glove(ant_pairs_activity)
+    dir_trustworthy = utils_fun.build_dimensions_glove(ant_pairs_trustworthy)
+    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
+    from comparison_dimensions import heat_map
+    heat_map(vectors)
+    # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
+    print ("GLOVE well done!")
     
 if __name__ == "__main__":
     # Get the path
-    warmth_pairs_path = data_yaml["SCM"]["warmth_pairs"]
-    competent_pairs_path = data_yaml["SCM"]["competent_pairs"]
+    warmth_pairs_path = data_yaml["Mixed"]["warmth_pairs"]
+    competent_pairs_path = data_yaml["Mixed"]["competent_pairs"]
     evaluation_pairs_path = data_yaml["SD"]["evaluation"]
     potency_pairs_path = data_yaml["SD"]["potency"]
     activity_pairs_path = data_yaml["SD"]["activity"]
@@ -55,13 +68,16 @@ if __name__ == "__main__":
     # evaluation_pair = middleware.filter_pairs(ant_pairs_evaluation)
     # potency_pair = middleware.filter_pairs(ant_pairs_potency)
         
-    METHOD = "MEC"
+    METHOD = "GLOVE"
     # METHOD = "GOOGLE"
+    # METHOD = "MEC"
     
     if METHOD == "MEC":
         run_mec_func(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy)
     elif METHOD ==  "GOOGLE":
         run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy)
+    elif METHOD == "GLOVE":
+        run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy)
     else:
         print("We dont have this method yet!")
     

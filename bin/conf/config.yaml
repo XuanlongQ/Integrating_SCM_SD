@@ -38,5 +38,6 @@ Mixed:
   competent_pairs: "Integrating_SCM_SD/bin/doc/final_pairs/mixed_competent.csv"
   
 Model_path:
-  mec: "mce/vectors.txt"
-  google_news: "css_word_embedding/stereotype/GoogleNews-vectors-negative300.bin"
+  mce: "word_embeddings/mce_vectors.txt"
+  google_news: "word_embeddings/GoogleNews-vectors-negative300.bin"
+  glove: "word_embeddings/glove.840B.300d.txt"
