@@ -14,7 +14,7 @@ def calculate_each_two(vectors):
             print(f"The cosine similarity between vector {i+1} and vector {j+1} is {similarity:.2f}")
 
 
-def heat_map(vectors):
+def heat_map(vectors,METHOD):
     # Compute the cosine similarity matrix
     similarities = np.dot(vectors, vectors.T) / (np.linalg.norm(vectors, axis=1) * np.linalg.norm(vectors, axis=1)[:, np.newaxis])
 
@@ -37,8 +37,11 @@ def heat_map(vectors):
             text = ax.text(j, i, "{:.2f}".format(similarities[i, j]), ha="center", va="center", color="w")
 
     # Set the title and show the plot
-    ax.set_title("Cosine Similarity Matrix")
+    ax.set_title(str(METHOD) + " " + "Cosine Similarity Matrix")
     fig.tight_layout()
+    # Save picture
+    # figureP = "Integrating_SCM_SD/bin/output/figure_cosine_simlarity/" + METHOD + ".png" 
+    # plt.savefig(figureP)
     plt.show()
 
     
