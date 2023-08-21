@@ -41,3 +41,4 @@ Model_path:
   mce: "word_embeddings/mce_vectors.txt"
   google_news: "word_embeddings/GoogleNews-vectors-negative300.bin"
   glove: "word_embeddings/glove.840B.300d.txt"
+  fasttext: "word_embeddings/crawl-300d-2M-subword.bin"
