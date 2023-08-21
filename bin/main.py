@@ -6,7 +6,7 @@ Yamlcon = utils_fun.YamlConfig()
 data_yaml = Yamlcon.get_yaml()
     
 
-def run_mec_func(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy):
+def run_mec_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy):
     dir_warmth = utils_fun.build_dimensions_mce(ant_pairs_warmth)
     dir_competent = utils_fun.build_dimensions_mce(ant_pairs_competent)
     dir_evaluation = utils_fun.build_dimensions_mce(ant_pairs_evaluation)
@@ -44,6 +44,19 @@ def run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_
     heat_map(vectors)
     # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
     print ("GLOVE well done!")
+
+def run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy):
+    dir_warmth = utils_fun.build_dimensions_fasttext(ant_pairs_warmth)
+    dir_competent = utils_fun.build_dimensions_fasttext(ant_pairs_competent)
+    dir_evaluation = utils_fun.build_dimensions_fasttext(ant_pairs_evaluation)
+    dir_potency = utils_fun.build_dimensions_fasttext(ant_pairs_potency)
+    dir_activity = utils_fun.build_dimensions_fasttext(ant_pairs_activity)
+    dir_trustworthy = utils_fun.build_dimensions_fasttext(ant_pairs_trustworthy)
+    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
+    from comparison_dimensions import heat_map
+    heat_map(vectors)
+    # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
+    print ("Fastetext Word2Vec well done!")
     
 if __name__ == "__main__":
     # Get the path
@@ -68,16 +81,19 @@ if __name__ == "__main__":
     # evaluation_pair = middleware.filter_pairs(ant_pairs_evaluation)
     # potency_pair = middleware.filter_pairs(ant_pairs_potency)
         
-    METHOD = "GLOVE"
+    # METHOD = "GLOVE"
+    METHOD = "FASTTEXT"
     # METHOD = "GOOGLE"
     # METHOD = "MEC"
     
     if METHOD == "MEC":
-        run_mec_func(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy)
+        run_mec_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy)
     elif METHOD ==  "GOOGLE":
         run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy)
     elif METHOD == "GLOVE":
         run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy)
+    elif METHOD == "FASTTEXT":
+        run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy)
     else:
         print("We dont have this method yet!")
     
