@@ -30,22 +30,22 @@ def word2vec_mce(search_val):
             print('err is :',e )
             print(line + "can not found")
             
-def search_antonyms(val):
+def search_antonyms(target_word):
     Antomymsl_class_1_2 = "word_antonyms/AntonymsLexicon-OppCats-Affixes"
     antonym = []
-    antonym.append(val)
     with open(Antomymsl_class_1_2,'r',encoding='utf-8') as f:
         for line in f:
             newline = line.strip().split(" ")
-            if val == newline[0]:
+            if target_word == newline[0]:
                 antonym.append(newline[1])
-                #return val, newline[1]
-            elif val == newline[1]:
+
+            elif target_word == newline[1]:
                 antonym.append(newline[0])
-                #return val, newline[0]
+                
             else:
                 continue
-    return antonym
+    print(len(antonym))
+    return target_word, antonym
 
 def social_dis(a,b):
     """return cosine similarity
@@ -63,37 +63,80 @@ def social_dis(a,b):
     b_norm = np.linalg.norm(b)
     
     denominator = a_norm * b_norm
+    
     cosine_similarity = nominator / denominator
     social_dis = 1- cosine_similarity
     return social_dis
 
-def determine_pairs(antonymlist):
-    antonymlist_arr = []
-    for val in antonymlist:
-        if val:
-            vec_vector = word2vec_mce(val)
-            antonymlist_arr.append(vec_vector)
-        else:
-            continue
-    return antonymlist_arr
 
+def determine_degree(target_word,antonymlist):
+    """Find the most contrusting meaning's pairs
+
+    Args:
+        target_word (string): the target word of pairs
+        antonymlist (Array list): the antonym list of the target word.
+
+    Returns:
+        tuple: target word and the most contrusting word.
+    """
+    antonymlist = set(antonymlist)
     
+    while target_word in antonymlist:
+        antonymlist.remove(target_word)
+            
+    antonymlist_dic = {}
+    target_word_vec = word2vec_mce(target_word)
+    for antonym in antonymlist:
+        antonym_vec = word2vec_mce(antonym)
+        if antonym_vec is None:
+            continue
+        else:
+            antonymlist_dic[antonym] = antonym_vec
+            
+    antonymlist_dic[target_word] = target_word_vec
+    
+    
+    max_sim = 0
+    min_sim = 2
+    max_pair = None
+    min_pair = None
+    for item in antonymlist_dic.keys():
+        if item is target_word:
+            # remove the target word per se.
+            continue
+        else:
+            sim = social_dis(antonymlist_dic[target_word],antonymlist_dic[item])
+            print(f"Cosine distance between '{target_word}' and '{item}': {sim:.2f}")
+            if sim > max_sim:
+                max_sim = sim
+                max_pair = (target_word,item)
+            if sim < min_sim:
+                min_sim = sim 
+                min_pair = (target_word,item)
+    print(f"\nPair with highest Cosine distance: {max_pair[0]} and {max_pair[1]} with similarity {max_sim:.2f}")
+    print(f"Pair with lowest Cosine distance: {min_pair[0]} and {min_pair[1]} with similarity {min_sim:.2f}")
+    
+    return max_pair
+    
+
+def writeToFile(maxdistance_pair,original_file):
+    o_file = original_file.split('/')[1]
+    writepath = 'Integrating_SCM_SD/bin/output/contrusting_pairs_mce/' + o_file
+    with open(writepath,'a+',encoding='utf-8') as file:
+        file.write(maxdistance_pair[0]+','+ maxdistance_pair[1]+'\n')
+        file.close()
 
 if __name__ == "__main__":
     original_file = "word_antonyms/scm_warm_low"
+    o_file = original_file.split('/')[1]
     with open(original_file,'r',encoding= 'utf-8') as f:
         for line in f:
             line = line.strip()
             try:
-                antonymlist =  search_antonyms(line)
-                print(antonymlist)
-                determine_pairs(antonymlist)
+                target_word, antonymlist =  search_antonyms(line)
+                maxdistance_pair = determine_degree(target_word, antonymlist)
+                writeToFile(maxdistance_pair,original_file)
+                
             except Exception as err:
                 print(" the err is: {} ".format(err))
             sys.exit(0)
-    # 
-    # val,val_antonym = search_antonyms()
-    # if val and val_antonym:
-    #     print(val, val_antonym)
-    # else:
-    #     print("Can not find {} !".format(val))
