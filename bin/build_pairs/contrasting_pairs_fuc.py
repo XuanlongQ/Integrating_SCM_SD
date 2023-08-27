@@ -106,7 +106,7 @@ def determine_degree(target_word,antonymlist):
             continue
         else:
             sim = social_dis(antonymlist_dic[target_word],antonymlist_dic[item])
-            print(f"Cosine distance between '{target_word}' and '{item}': {sim:.2f}")
+            # print(f"Cosine distance between '{target_word}' and '{item}': {sim:.2f}")
             if sim > max_sim:
                 max_sim = sim
                 max_pair = (target_word,item)
@@ -127,7 +127,7 @@ def writeToFile(maxdistance_pair,original_file):
         file.close()
 
 if __name__ == "__main__":
-    original_file = "word_antonyms/scm_warm_low"
+    original_file = "word_antonyms/scm_warm_high"
     o_file = original_file.split('/')[1]
     with open(original_file,'r',encoding= 'utf-8') as f:
         for line in f:
@@ -139,4 +139,4 @@ if __name__ == "__main__":
                 
             except Exception as err:
                 print(" the err is: {} ".format(err))
-            sys.exit(0)
+            
