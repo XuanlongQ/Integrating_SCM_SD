@@ -60,8 +60,8 @@ def run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,a
     
 if __name__ == "__main__":
     # Get the path
-    warmth_pairs_path = data_yaml["Mixed"]["warmth_pairs"]
-    competent_pairs_path = data_yaml["Mixed"]["competent_pairs"]
+    warmth_pairs_path = data_yaml["SCM"]["scm_warmth_mce"]
+    competent_pairs_path = data_yaml["SCM"]["scm_competent_mce"]
     evaluation_pairs_path = data_yaml["SD"]["evaluation"]
     potency_pairs_path = data_yaml["SD"]["potency"]
     activity_pairs_path = data_yaml["SD"]["activity"]
