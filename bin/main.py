@@ -17,6 +17,7 @@ def run_mec_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pa
     from comparison_dimensions import heat_map
     heat_map(vectors,METHOD)
     # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
+    utils_fun.print_similarities(vectors)
     print ("MCE well done!")
 
 def run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD):
@@ -28,8 +29,9 @@ def run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant
     dir_trustworthy = utils_fun.build_dimensions(ant_pairs_trustworthy)
     vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
     from comparison_dimensions import heat_map
-    heat_map(vectors,METHOD)
-    # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
+    # heat_map(vectors,METHOD)
+    utils_fun.print_similarities(vectors)
+    utils_fun.print_Bhattacharyya_distance(vectors)
     print ("Google Word2Vec well done!")
 
 def run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD):
@@ -42,7 +44,7 @@ def run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_
     vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
     from comparison_dimensions import heat_map
     heat_map(vectors,METHOD)
-    # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
+    # utils_fun.print_similarities(vectors)
     print ("GLOVE well done!")
 
 def run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD):
@@ -55,7 +57,7 @@ def run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,a
     vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
     from comparison_dimensions import heat_map
     heat_map(vectors,METHOD)
-    # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
+    # utils_fun.print_similarities(vectors)
     print ("Fastetext Word2Vec well done!")
     
 if __name__ == "__main__":
@@ -83,8 +85,8 @@ if __name__ == "__main__":
         
     # METHOD = "GLOVE"
     # METHOD = "FASTTEXT"
-    # METHOD = "GOOGLE"
-    METHOD = "MCE"
+    METHOD = "GOOGLE"
+    # METHOD = "MCE"
     
     if METHOD == "MCE":
         run_mec_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD)
