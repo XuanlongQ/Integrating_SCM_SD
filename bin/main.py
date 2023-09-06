@@ -31,7 +31,7 @@ def run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant
     from comparison_dimensions import heat_map
     # heat_map(vectors,METHOD)
     utils_fun.print_similarities(vectors)
-    utils_fun.print_Bhattacharyya_distance(vectors)
+    utils_fun.print_Bhattacharyya_measure(vectors)
     print ("Google Word2Vec well done!")
 
 def run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD):
