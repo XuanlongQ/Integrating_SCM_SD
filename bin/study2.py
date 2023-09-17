@@ -1,3 +1,5 @@
+# Define dimensions of opposition
+
 import pandas as pd
 from lib import utils_fun
 from lib.middleware import word2vec_fun
@@ -82,16 +84,16 @@ def write_to_tsne(filep):
 
 if __name__ == "__main__":
     # Get the path
-    # filep = data_yaml["Dir"]["reduction_pairs"]
+    filep = data_yaml["Dir"]["reduction_pairs"]
     
-    # dirlist = os.listdir(filep)
-    # for dir_ in dirlist:
-    #     file_path = filep + dir_
-    #     write_to_tsne(file_path)
-    #     print(" file {} hass finished".format(file_path))
+    dirlist = os.listdir(filep)
+    for dir_ in dirlist:
+        file_path = filep + dir_
+        write_to_dta(file_path)
+        print(" file {} hass finished".format(file_path))
         
-    # print("Finish all tasks.")
-    filep = data_yaml["Osgood"]["50_pairs"]
-    write_to_dta(filep)
     print("Finish all tasks.")
+    # filep = data_yaml["Osgood"]["50_pairs"]
+    # write_to_dta(filep)
+    # print("Finish all tasks.")
     
