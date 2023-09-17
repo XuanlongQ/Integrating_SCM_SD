@@ -1,4 +1,4 @@
-import sys
+## Study 1: Constructing contrasting pairs in word embeddings
 import numpy as np
 
 def word2vec_mce(search_val):
