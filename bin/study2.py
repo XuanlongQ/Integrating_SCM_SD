@@ -89,7 +89,7 @@ if __name__ == "__main__":
     dirlist = os.listdir(filep)
     for dir_ in dirlist:
         file_path = filep + dir_
-        write_to_dta(file_path)
+        write_to_dta(file_path) # for stata analysis
         print(" file {} hass finished".format(file_path))
         
     print("Finish all tasks.")
