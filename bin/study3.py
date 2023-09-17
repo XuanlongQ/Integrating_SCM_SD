@@ -155,7 +155,46 @@ def test_scm_robustness(SCM_MAP):
                     #print("hw-hc:",val)
             print("HW-HC correct rate is {}".format(T/len(SCM_MAP[item])))
             print(T,len(SCM_MAP[item]))
-            
+
+def test_sd_robustness(SCM_MAP):
+    for item in SCM_MAP.keys():
+        # print(item)
+        if item == 'LW-LC':
+            T = 0
+            for val in SCM_MAP[item]:
+                if val in SD_LW_LC:
+                    T += 1
+                else:
+                    # print('lw-lc:',val)
+                    continue
+            print("LW-LC correct rate is {}".format(T/len(SCM_MAP[item])))
+            print(T,len(SCM_MAP[item]))
+        elif item == 'LW-HC':
+            T = 0
+            for val in SCM_MAP[item]:
+                if val in SD_LW_HC:
+                    T += 1
+            print("LW-HC correct rate is {}".format(T/len(SCM_MAP[item])))
+            print(T,len(SCM_MAP[item]))
+        elif item == 'HW-LC':
+            T = 0
+            for val in SCM_MAP[item]:
+                if val in SD_HW_LC:
+                    T += 1
+            print("HW-LC correct rate is {}".format(T/len(SCM_MAP[item])))
+            print(T,len(SCM_MAP[item]))
+        else:
+            item == 'HW-HC'
+            T = 0
+            for val in SCM_MAP[item]:
+                if val in SD_HW_HC:
+                    T += 1
+                else:
+                    continue
+                    #print("hw-hc:",val)
+            print("HW-HC correct rate is {}".format(T/len(SCM_MAP[item])))
+            print(T,len(SCM_MAP[item]))
+           
 if __name__ == '__main__':
     # groups = find_groups()   
     # 'high-strung','good natured' had lost 
@@ -181,14 +220,14 @@ if __name__ == '__main__':
     print(len(groups),len(groups_boarder))
     
     # study3 scm
-    scm_map = get_dimensions(groups,'scm')
+    scm_map = get_dimensions(groups_boarder,'scm')
     print(scm_map)
     test_scm_robustness(scm_map)
     
     # study3 sd
-    sd_map = get_dimensions(groups,'sd')
+    sd_map = get_dimensions(groups_boarder,'sd')
     print(sd_map)
-    test_scm_robustness(sd_map)
+    test_sd_robustness(sd_map)
             
 
     
