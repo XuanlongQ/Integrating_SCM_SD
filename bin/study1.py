@@ -127,7 +127,7 @@ def writeToFile(maxdistance_pair,original_file):
         file.close()
 
 if __name__ == "__main__":
-    original_file = "/Users/xuanlong/Documents/program/python/src/xuanlong/alg/Integrating_SCM_SD/bin/doc/external_study4/extra_pairs/status.csv"
+    original_file = "/Users/xuanlong/Documents/program/python/src/xuanlong/alg/Integrating_SCM_SD/bin/doc/external_study4/extra_pairs/geography.csv"
     o_file = original_file.split('/')[1]
     with open(original_file,'r',encoding= 'utf-8') as f:
         for line in f:

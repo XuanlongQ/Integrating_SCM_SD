@@ -29,9 +29,9 @@ def run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant
     dir_trustworthy = utils_fun.build_dimensions(ant_pairs_trustworthy)
     vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
     from comparison_dimensions import heat_map
-    # heat_map(vectors,METHOD)
+    heat_map(vectors,METHOD)
     utils_fun.print_similarities(vectors)
-    utils_fun.print_Bhattacharyya_measure(vectors)
+    # utils_fun.print_Bhattacharyya_measure(vectors)
     print ("Google Word2Vec well done!")
 
 def run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD):
@@ -62,12 +62,20 @@ def run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,a
     
 if __name__ == "__main__":
     # Get the path
-    warmth_pairs_path = data_yaml["SCM"]["scm_warmth_mce"]
-    competent_pairs_path = data_yaml["SCM"]["scm_competent_mce"]
-    evaluation_pairs_path = data_yaml["SD"]["evaluation"]
-    potency_pairs_path = data_yaml["SD"]["potency"]
-    activity_pairs_path = data_yaml["SD"]["activity"]
-    trustworthy_pairs_path = data_yaml["Trust"]["20_paris"]
+    # warmth_pairs_path = data_yaml["SCM"]["scm_warmth_mce"]
+    # competent_pairs_path = data_yaml["SCM"]["scm_competent_mce"]
+    # evaluation_pairs_path = data_yaml["SD"]["evaluation"]
+    # potency_pairs_path = data_yaml["SD"]["potency"]
+    # activity_pairs_path = data_yaml["SD"]["activity"]
+    # trustworthy_pairs_path = data_yaml["Trust"]["20_paris"]
+    
+    warmth_pairs_path = 'Integrating_SCM_SD/bin/output/contrusting_pairs_mce/scm_warm_mce.csv'
+    competent_pairs_path = 'Integrating_SCM_SD/bin/output/contrusting_pairs_mce/scm_competent_mce.csv'
+    evaluation_pairs_path = 'Integrating_SCM_SD/bin/output/contrusting_pairs_mce/appearance_mce.csv'
+    potency_pairs_path = 'Integrating_SCM_SD/bin/output/contrusting_pairs_mce/belief_mce.csv'
+    activity_pairs_path = 'Integrating_SCM_SD/bin/output/contrusting_pairs_mce/geograpgy_mce.csv'
+    trustworthy_pairs_path = 'Integrating_SCM_SD/bin/output/contrusting_pairs_mce/status_mce.csv'
+    
     
     # SCM dimensions
     ant_pairs_warmth = utils_fun.get_antonym_pairs(warmth_pairs_path)
@@ -83,9 +91,9 @@ if __name__ == "__main__":
     # evaluation_pair = middleware.filter_pairs(ant_pairs_evaluation)
     # potency_pair = middleware.filter_pairs(ant_pairs_potency)
         
-    # METHOD = "GLOVE"
+    METHOD = "GLOVE"
     # METHOD = "FASTTEXT"
-    METHOD = "GOOGLE"
+    # METHOD = "GOOGLE"
     # METHOD = "MCE"
     
     if METHOD == "MCE":

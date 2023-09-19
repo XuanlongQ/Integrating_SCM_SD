@@ -25,8 +25,12 @@ def heat_map(vectors,METHOD):
     # Set the tick labels
     ax.set_xticks(np.arange(len(vectors)))
     ax.set_yticks(np.arange(len(vectors)))
-    ax.set_xticklabels(["warmth", "competent", "evaluation", "potency", "activity", "trustworthy"])
-    ax.set_yticklabels(["warmth", "competent", "evaluation", "potency", "activity", "trustworthy"])
+    ax.set_xticklabels(['dir_warmth','dir_competent','dir_appearance','dir_belief','dir_geography','dir_status'])
+    ax.set_yticklabels(['dir_warmth','dir_competent','dir_appearance','dir_belief','dir_geography','dir_status'])
+    
+    
+    # ax.set_xticklabels(["warmth", "competent", "evaluation", "potency", "activity", "trustworthy"])
+    # ax.set_yticklabels(["warmth", "competent", "evaluation", "potency", "activity", "trustworthy"])
 
     # Rotate the tick labels and set their alignment
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
