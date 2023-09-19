@@ -4,8 +4,8 @@ SCM:
   All_pairs: "Integrating_SCM_SD/bin/doc/SCM_all_pairs.csv"
   warmth_pairs_contrusting: "Integrating_SCM_SD/bin/doc/original_pairs/SCM_warmth_contrusting.csv"
   competent_pairs_contrusting: "Integrating_SCM_SD/bin/doc/original_pairs/SCM_competent_contrusting.csv"
-  scm_competent_mce: "Integrating_SCM_SD/bin/output/contrusting_pairs_mce/scm_competent_mce"
-  scm_warmth_mce: "Integrating_SCM_SD/bin/output/contrusting_pairs_mce/scm_warm_mce"
+  scm_competent_mce: "Integrating_SCM_SD/bin/output/contrusting_pairs_mce/scm_competent_mce.csv"
+  scm_warmth_mce: "Integrating_SCM_SD/bin/output/contrusting_pairs_mce/scm_warm_mce.csv"
 SD:
   activity: "Integrating_SCM_SD/bin/doc/original_pairs/osgood_activity.csv"
   evaluation: "Integrating_SCM_SD/bin/doc/original_pairs/osgood_evaluation.csv"
