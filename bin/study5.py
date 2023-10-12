@@ -1,6 +1,5 @@
 import numpy as np
-import sys
-from lib import utils_fun,middleware,remain
+from lib import utils_fun
 
 Yamlcon = utils_fun.YamlConfig()
 data_yaml = Yamlcon.get_yaml()
@@ -16,45 +15,41 @@ def run_mec_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pa
     vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
     from comparison_dimensions import heat_map
     heat_map(vectors,METHOD)
-    # utils_fun.print_similarities(dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy)
     utils_fun.print_similarities(vectors)
     print ("MCE well done!")
 
-def run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD):
+def run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,METHOD):
     dir_warmth = utils_fun.build_dimensions(ant_pairs_warmth)
     dir_competent = utils_fun.build_dimensions(ant_pairs_competent)
     dir_evaluation = utils_fun.build_dimensions(ant_pairs_evaluation)
     dir_potency = utils_fun.build_dimensions(ant_pairs_potency)
     dir_activity = utils_fun.build_dimensions(ant_pairs_activity)
-    dir_trustworthy = utils_fun.build_dimensions(ant_pairs_trustworthy)
-    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
+    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity]))
     from comparison_dimensions import heat_map
-    # heat_map(vectors,METHOD)
+    heat_map(vectors,METHOD)
     utils_fun.print_similarities(vectors)
-    utils_fun.print_Bhattacharyya_measure(vectors)
+    # utils_fun.print_Bhattacharyya_measure(vectors)
     print ("Google Word2Vec well done!")
 
-def run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD):
+def run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,METHOD):
     dir_warmth = utils_fun.build_dimensions_glove(ant_pairs_warmth)
     dir_competent = utils_fun.build_dimensions_glove(ant_pairs_competent)
     dir_evaluation = utils_fun.build_dimensions_glove(ant_pairs_evaluation)
     dir_potency = utils_fun.build_dimensions_glove(ant_pairs_potency)
     dir_activity = utils_fun.build_dimensions_glove(ant_pairs_activity)
-    dir_trustworthy = utils_fun.build_dimensions_glove(ant_pairs_trustworthy)
-    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
+    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity]))
     from comparison_dimensions import heat_map
     heat_map(vectors,METHOD)
     # utils_fun.print_similarities(vectors)
     print ("GLOVE well done!")
 
-def run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD):
+def run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,METHOD):
     dir_warmth = utils_fun.build_dimensions_fasttext(ant_pairs_warmth)
     dir_competent = utils_fun.build_dimensions_fasttext(ant_pairs_competent)
     dir_evaluation = utils_fun.build_dimensions_fasttext(ant_pairs_evaluation)
     dir_potency = utils_fun.build_dimensions_fasttext(ant_pairs_potency)
     dir_activity = utils_fun.build_dimensions_fasttext(ant_pairs_activity)
-    dir_trustworthy = utils_fun.build_dimensions_fasttext(ant_pairs_trustworthy)
-    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity,dir_trustworthy]))
+    vectors = (np.stack([dir_warmth,dir_competent,dir_evaluation,dir_potency,dir_activity]))
     from comparison_dimensions import heat_map
     heat_map(vectors,METHOD)
     # utils_fun.print_similarities(vectors)
@@ -67,7 +62,6 @@ if __name__ == "__main__":
     evaluation_pairs_path = data_yaml["SD"]["evaluation"]
     potency_pairs_path = data_yaml["SD"]["potency"]
     activity_pairs_path = data_yaml["SD"]["activity"]
-    trustworthy_pairs_path = data_yaml["Trust"]["20_paris"]
     
     # SCM dimensions
     ant_pairs_warmth = utils_fun.get_antonym_pairs(warmth_pairs_path)
@@ -75,27 +69,17 @@ if __name__ == "__main__":
     ant_pairs_evaluation = utils_fun.get_antonym_pairs(evaluation_pairs_path)
     ant_pairs_potency = utils_fun.get_antonym_pairs(potency_pairs_path)
     ant_pairs_activity = utils_fun.get_antonym_pairs(activity_pairs_path)
-    ant_pairs_trustworthy = utils_fun.get_antonym_pairs(trustworthy_pairs_path)
-    
-    # filter pairs, condition cossim < 0.5
-    # warm_pair = middleware.filter_pairs(ant_pairs_warmth)
-    # competent_pair = middleware.filter_pairs(ant_pairs_competent)
-    # evaluation_pair = middleware.filter_pairs(ant_pairs_evaluation)
-    # potency_pair = middleware.filter_pairs(ant_pairs_potency)
-        
-    # METHOD = "GLOVE"
+      
+    METHOD = "GLOVE"
     # METHOD = "FASTTEXT"
-    METHOD = "GOOGLE"
-    # METHOD = "MCE"
+    # METHOD = "GOOGLE"
     
-    if METHOD == "MCE":
-        run_mec_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD)
-    elif METHOD ==  "GOOGLE":
-        run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD)
+    if METHOD ==  "GOOGLE":
+        run_google_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,METHOD)
     elif METHOD == "GLOVE":
-        run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD)
+        run_glove_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,METHOD)
     elif METHOD == "FASTTEXT":
-        run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,ant_pairs_trustworthy,METHOD)
+        run_fasttext_fun(ant_pairs_warmth,ant_pairs_competent,ant_pairs_evaluation,ant_pairs_potency,ant_pairs_activity,METHOD)
     else:
         print("We dont have this method yet!")
     
