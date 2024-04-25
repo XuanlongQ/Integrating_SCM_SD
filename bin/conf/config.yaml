@@ -46,3 +46,20 @@ Model_path:
   google_news: "word_embeddings/GoogleNews-vectors-negative300.bin"
   glove: "word_embeddings/glove.840B.300d.txt"
   fasttext: "word_embeddings/crawl-300d-2M-subword.bin"
+
+# the original pairs for each dimension
+word_pairs:
+  warmth_pairs: "Integrating_SCM_SD/bin/doc/seed_words/warmth.csv"
+  competent_pairs: "Integrating_SCM_SD/bin/doc/seed_words/competence.csv"
+  communion_pairs: "Integrating_SCM_SD/bin/doc/seed_words/communion.csv"
+  agency_pairs: "Integrating_SCM_SD/bin/doc/seed_words/agency.csv"
+
+
+# the contrusting pairs for each dimension
+contrasting_pairs:
+  warmth_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/warmth_contrasting.csv"
+  competent_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/competence_contrasting.csv"
+  communion_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/communion_contrasting.csv"
+  agency_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/agency_contrasting.csv"
+
+
