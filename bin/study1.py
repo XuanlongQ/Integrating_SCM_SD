@@ -1,4 +1,4 @@
-## Study 1: Constructing contrasting pairs in word embeddings
+## Study 1: Constructing contrasting pairs by mce alrorithms
 import numpy as np
 import yaml
 
