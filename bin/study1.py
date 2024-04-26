@@ -1,3 +1,10 @@
+# -*- encoding: utf-8 -*-
+'''
+@file: study1.py
+@Author: Xuanlong
+@emaial: qxlpku@gmail.com
+''' 
+
 ## Study 1: Constructing contrasting pairs by mce alrorithms
 import numpy as np
 import yaml
