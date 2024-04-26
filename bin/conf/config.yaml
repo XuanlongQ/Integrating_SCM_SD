@@ -57,9 +57,17 @@ word_pairs:
 
 # the contrusting pairs for each dimension
 contrasting_pairs:
+  # constructed by the original pairs
   warmth_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/warmth_contrasting.csv"
   competent_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/competence_contrasting.csv"
   communion_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/communion_contrasting.csv"
   agency_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/agency_contrasting.csv"
+
+  # Osgood's original contrasting pairs
+  evaluation_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/evaluation_contrasting.csv"
+  potency_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/potency_contrasting.csv"
+  activity_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/activity_contrasting.csv"
+  
+
 
 
