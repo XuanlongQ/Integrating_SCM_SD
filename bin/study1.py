@@ -83,7 +83,7 @@ def social_dis(a,b):
     social_dis = 1- cosine_similarity
     return social_dis
 
-def determine_degree(target_word,antonymlist):
+def determine_contrasting_pairs(target_word,antonymlist):
     """Find the most contrusting meaning's pairs
 
     Args:
@@ -106,7 +106,22 @@ def determine_degree(target_word,antonymlist):
             
     antonymlist_dic[target_word] = target_word_vec
     
-    
+    if len(antonymlist_dic) == 0:
+        return None
+    else:
+        contrasting_pair = compare_degree(target_word,antonymlist_dic)
+        return contrasting_pair
+        
+def compare_degree(target_word,antonymlist_dic):
+    """compare the similarity between target word and antonyms
+
+    Args:
+        target_word (str): the target word
+        antonymlist_dic (dic): the antonyms list of the target word
+
+    Returns:
+        tuple: the most contrasting pair
+    """
     max_sim = 0
     min_sim = 2
     max_pair = None
@@ -203,7 +218,15 @@ if __name__ == "__main__":
         print("this task is {} has {} seed words".format(task, len(seed_words)))   
         
         for seed_word in seed_words:
-            target_word, antonymlist =  search_antonyms(Antomymsl_file,seed_word)
-            contrasting_pair = determine_degree(target_word, antonymlist)
-            writeToFile(contrasting_pair,task)
+            try:
+                target_word, antonymlist =  search_antonyms(Antomymsl_file,seed_word)
+                contrasting_pair = determine_contrasting_pairs(target_word, antonymlist)
+                if contrasting_pair is not None:
+                    writeToFile(contrasting_pair,task)
+                else:
+                    print("contrasting_pair is None")
+            except Exception as err:
+                print(" the err is: {} ".format(err))
+                print("This word {} has no antonyms".format(seed_word))
+                continue
     
