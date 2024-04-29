@@ -141,7 +141,6 @@ if __name__ == "__main__":
             print("contrastingPairsArray is None")
         else:
             dimensions = build_dimensions(contrastingPairsArray)
-            print(dimensions.shape())
         dimensionsSP.append(dimensions)
         
     drawHeatMap(dimensionsSP,task_list)

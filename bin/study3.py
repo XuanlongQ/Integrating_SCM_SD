@@ -3,6 +3,30 @@
 import re
 import numpy as np
 import matplotlib.pyplot as plt
+
+# Benchmarking the semantic significance of SCM and SD dimensions
+# 'high-strung','good natured' had lost 
+# all 64 personality traits.(actual 59)
+groups = ['determined', 'practical', 'industrious', 'intelligent', 'unintelligent', 'skillful', 'clumsy', 'cautious', 
+            'impulsive', 'warm', 'cold', 'irritable',  'humorous', 'humorless', 'sociable', 'unsociable',
+            'popular', 'unpopular', 'happy', 'unhappy', 'imaginative', 'unimaginative', 'reliable', 'unreliable', 'honest',
+            'dishonest', 'important', 'insignificant', 'persistent', 'wavering', 'foolish', 'shrewd', 'critical', 'tolerant', 
+            'serious', 'frivolous', 'vain', 'modest', 'submissive', 'irresponsible', 'sincere', 'helpful', 'sentimental',
+            'naive', 'scientific', 'discriminating', 'squeamish', 'daring', 'superficial', 'moody', 'pessimistic', 'wasteful', 
+            'stern', 'finicky', 'artistic', 'meditative', 'dominating', 'boring', 'reserved']
+
+#'inventive','liar','egotistical'
+# all 64 personality traits excluding ambiguous stereotype.(actual 39)
+groups_boarder = ['practical', 'industrious', 'intelligent', 'unintelligent', 'skillful', 'clumsy', 'cautious', 
+            'impulsive', 'warm', 'cold',  'humorous', 'humorless', 'sociable', 'unsociable',
+            'popular', 'happy',  'imaginative', 'unimaginative', 'reliable', 'unreliable', 
+            'dishonest', 'important', 'insignificant',  'wavering',  'tolerant', 
+            'serious',  'modest', 'irresponsible', 'sincere', 'helpful', 'sentimental',
+            'squeamish',  'superficial',  'wasteful', 
+            'artistic', 'meditative', 'dominating', 'boring', 'unpopular']
+# draw_pic(groups)
+print(len(groups),len(groups_boarder))
+
 # SCM
 SCM_HW_HC = ['reliable','reserved','artistic', 'meditative','practical', 'important','industrious',  'cautious', 'serious','discriminating','intelligent', 'skillful', 'imaginative','scientific', 'determined'  ]
 SCM_HW_LC = ['shrewd','honest','modest','tolerant','helpful','sincere','sentimental','humorous','good natured','happy','popular','sociable','warm','naive','submissive']
@@ -108,7 +132,6 @@ def draw_pic(groups):
             warmth.append(val[1][0])
             competent.append(val[1][1])
 
-
     plt.xlim((-1, 1))
     plt.ylim((-1, 1))
     plt.scatter(warmth, competent)
@@ -196,28 +219,7 @@ def test_sd_robustness(SCM_MAP):
             print(T,len(SCM_MAP[item]))
            
 if __name__ == '__main__':
-    # groups = find_groups()   
-    # 'high-strung','good natured' had lost 
-    # all 64 personality traits.(actual 59)
-    groups = ['determined', 'practical', 'industrious', 'intelligent', 'unintelligent', 'skillful', 'clumsy', 'cautious', 
-              'impulsive', 'warm', 'cold', 'irritable',  'humorous', 'humorless', 'sociable', 'unsociable',
-              'popular', 'unpopular', 'happy', 'unhappy', 'imaginative', 'unimaginative', 'reliable', 'unreliable', 'honest',
-              'dishonest', 'important', 'insignificant', 'persistent', 'wavering', 'foolish', 'shrewd', 'critical', 'tolerant', 
-              'serious', 'frivolous', 'vain', 'modest', 'submissive', 'irresponsible', 'sincere', 'helpful', 'sentimental',
-              'naive', 'scientific', 'discriminating', 'squeamish', 'daring', 'superficial', 'moody', 'pessimistic', 'wasteful', 
-              'stern', 'finicky', 'artistic', 'meditative', 'dominating', 'boring', 'reserved']
-    
-    #'inventive','liar','egotistical'
-    # all 64 personality traits excluding ambiguous stereotype.(actual 39)
-    groups_boarder = ['practical', 'industrious', 'intelligent', 'unintelligent', 'skillful', 'clumsy', 'cautious', 
-              'impulsive', 'warm', 'cold',  'humorous', 'humorless', 'sociable', 'unsociable',
-              'popular', 'happy',  'imaginative', 'unimaginative', 'reliable', 'unreliable', 
-              'dishonest', 'important', 'insignificant',  'wavering',  'tolerant', 
-              'serious',  'modest', 'irresponsible', 'sincere', 'helpful', 'sentimental',
-              'squeamish',  'superficial',  'wasteful', 
-               'artistic', 'meditative', 'dominating', 'boring', 'unpopular']
-    # draw_pic(groups)
-    print(len(groups),len(groups_boarder))
+
     
     # study3 scm
     scm_map = get_dimensions(groups_boarder,'scm')
