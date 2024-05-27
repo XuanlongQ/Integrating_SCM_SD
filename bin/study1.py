@@ -5,7 +5,7 @@
 @emaial: qxlpku@gmail.com
 ''' 
 
-## Study 1: Constructing contrasting pairs by mce alrorithms
+## Study 1 - Metods: Constructing contrasting pairs by mce alrorithms
 import numpy as np
 import yaml
 
@@ -185,7 +185,7 @@ def get_seed_word(path_file):
         list: seed word list
     """
     try:
-        with open(path_file,'r',encoding='utf-8') as f:
+        with open(path_file,'r',encoding='utf-8-sig') as f:
             antonym_list = []
             for line in f:
                 line = line.strip()
@@ -224,6 +224,8 @@ if __name__ == "__main__":
         seed_words = get_seed_word(seed_path)
         print("this task is {} has {} seed words".format(task, len(seed_words)))   
         
+        print(seed_words,len(seed_words))
+
         for seed_word in seed_words:
             try:
                 target_word, antonymlist =  search_antonyms(Antomymsl_file,seed_word)
@@ -236,4 +238,5 @@ if __name__ == "__main__":
                 print(" the err is: {} ".format(err))
                 print("This word {} has no antonyms".format(seed_word))
                 continue
-    
+        print("task {} is done".format(task))
+    print("All tasks are done")
