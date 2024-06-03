@@ -5,7 +5,7 @@
 @emaial: qxlpku@gmail.com
 ''' 
 
-# Supplementary- Measuring the accuracy of personality prediction
+# Supplementary- Measuring the accuracy of personality prediction 62 traits and 42 traits
 import numpy as np
 import re
 

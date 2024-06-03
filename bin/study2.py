@@ -115,24 +115,26 @@ def build_dimensions(contrastingPairsArray,wordembedding):
 
 if __name__ == "__main__":
     
-    model = 'word2vec_glove' # word2vec_fun, word2vec_fasttext, word2vec_glove
-    # models = ['word2vec_fun','word2vec_fasttext','word2vec_glove']
-    if model == "word2vec_glove":
-        task_list = ['warmth_pairs','competent_pairs','communion_pairs','agency_pairs','evaluation_pairs','potency_pairs','activity_pairs']
-        dimensionsSP = []
-        for task in task_list:
-            seed_path = get_file_path(config_file, ['contrasting_pairs',task])
-            print(seed_path)
-            # put the pairs in an array from csv file
-            contrastingPairsArray = contrasting_pairs_array(seed_path)
-            if contrastingPairsArray is None:
-                print("contrastingPairsArray is None")
-            else:
-                dimensions = build_dimensions(contrastingPairsArray,model)
-                dimensionsSP.append(dimensions)
-                
-            print(dimensionsSP,len(dimensionsSP))
-        with open ('Integrating_SCM_SD/bin/output/dimensions_glove.npy', 'wb') as f:
-            np.save(f,dimensionsSP)
-        print("all data has been saved")
-        
+    # model = 'word2vec_glove' # word2vec_fun, word2vec_fasttext, word2vec_glove
+    models = ['word2vec_fun','word2vec_fasttext','word2vec_glove']
+    for model in models:
+        if model == "word2vec_glove":
+            task_list = ['warmth_pairs','competent_pairs','communion_pairs','agency_pairs','evaluation_pairs','potency_pairs','activity_pairs']
+            dimensionsSP = []
+            for task in task_list:
+                seed_path = get_file_path(config_file, ['contrasting_pairs',task])
+                print(seed_path)
+                # put the pairs in an array from csv file
+                contrastingPairsArray = contrasting_pairs_array(seed_path)
+                if contrastingPairsArray is None:
+                    print("contrastingPairsArray is None")
+                else:
+                    dimensions = build_dimensions(contrastingPairsArray,model)
+                    dimensionsSP.append(dimensions)
+                    
+                print(dimensionsSP,len(dimensionsSP))
+            outputPath = 'Integrating_SCM_SD/bin/output/' + model + '.npy'
+            with open (outputPath, 'wb') as f:
+                np.save(f,dimensionsSP)
+            print("all data has been saved")
+            

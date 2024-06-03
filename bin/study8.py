@@ -77,7 +77,7 @@ def find_top_unique_similar_words(df, compared_vector, top_n=30):
      
 if __name__ == "__main__":
     task_list = ['warmth_pairs','competent_pairs','communion_pairs','agency_pairs','evaluation_pairs','potency_pairs','activity_pairs']
-    dimensionsVectors_path = get_file_path(config_file,["pics","dimensionsVectors"])
+    dimensionsVectors_path = get_file_path(config_file,["pics","dimensionsVectors_googlenews"])
     print(dimensionsVectors_path)
     
     data = np.load(dimensionsVectors_path)
@@ -102,5 +102,7 @@ if __name__ == "__main__":
     df['rp_word_pairs'] = df['rp_word_0'] + '_' + df['rp_word_1']
     
     top_30_words = find_top_unique_similar_words(df, average_a_c)
+    # top_30_words.to_csv('wce_top30.csv', index=False)
+    top_30_words.to_csv('ac_top30.csv', index=False)
     print(top_30_words)
 

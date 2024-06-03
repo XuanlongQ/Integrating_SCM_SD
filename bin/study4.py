@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 '''
-@file: pics.py
+@file: study4.py
 @Author: Xuanlong
 @emaial: qxlpku@gmail.com
 ''' 
@@ -88,7 +88,7 @@ def dimensionReduction(dimensionsSP):
     from sklearn.decomposition import PCA
     pca = PCA(n_components=2)
     dimensionsSP_reduced = pca.fit_transform(dimensionsSP)
-    print("Reduced data shape:", dimensionsSP_reduced.shape)  # 输出 (100, 2)
+    print("Reduced data shape:", dimensionsSP_reduced.shape) 
     print("Reduced data:", dimensionsSP_reduced)
     return dimensionsSP_reduced
 
@@ -96,33 +96,32 @@ def plot_vectors_and_points(data, labels):
     
     dimensionsSPreduced = dimensionReduction(data)
 
-    # 创建图和坐标轴
     fig, ax = plt.subplots()
 
-    # 对于数据集中的每一个点
+  
     for point, label in zip(dimensionsSPreduced, labels):
-        # 画点
-        ax.plot(point[0], point[1], 'o')  # 'o' 是点的标记
-        # 画向量
+        
+        ax.plot(point[0], point[1], 'o')  
+        
         ax.quiver(0, 0, point[0], point[1], angles='xy', scale_units='xy', scale=1, color='r')
-        # 添加标签
+        
         ax.text(point[0], point[1], f' {label}', color='blue', fontsize=12, ha='right', va='bottom')
 
-    # 设置图的范围
+   
     max_val = np.max(np.abs(dimensionsSPreduced)) + 1
     ax.set_xlim(-1, max_val)
     ax.set_ylim(-1, max_val)
-    ax.axhline(y=0, color='k')  # 横轴
-    ax.axvline(x=0, color='k')  # 纵轴
+    ax.axhline(y=0, color='k') 
+    ax.axvline(x=0, color='k') 
 
-    # 标题和网格
+
     plt.title("2-dimensional Configuration for content dimensions")
     plt.grid(True)
     
-    figureP = quadrant_path 
-    plt.savefig(figureP)
+    # figureP = quadrant_path 
+    # plt.savefig(figureP)
 
-    # 显示图
+    
     # plt.show()
 
 def plot_vectors_and_points_sub(ax, data, labels, show_grid=True):
@@ -165,12 +164,12 @@ def plot_heatmap(ax, data, labels):
     dimensions_reduced = dimensionReduction(data)
     cosine_matrix = cosine_similarity(dimensions_reduced)
     
-    # 使用Seaborn绘制热力图并添加标签
+  
     sns.heatmap(cosine_matrix, annot=True, fmt=".2f", cmap='coolwarm', ax=ax, 
                 xticklabels=labels, yticklabels=labels)
     ax.tick_params(axis='x', rotation=45)
 
-def dim_red_3():
+def dim_red_3(data):
     # select first 6 rows in data
     data_no_activity = data[0:6]
     task_list = ['Warmth','Competence','Communion','Agency','Evaluation','Potency']
@@ -184,31 +183,29 @@ def dim_red_3():
     print(data_no_SD
           ,len(data_no_SD),type(data_no_SD))
     
-    # 三个数据集
+   
     datasets =[data, data_no_activity, data_no_SD]
     labels_list = [task_list_all, task_list, task_list_no_SD]
-    # 创建图形和子图
+
     fig, axes = plt.subplots(2, len(datasets), figsize=(5 * len(datasets), 9))
     # fig, axes = plt.subplots(2, 3, figsize=(18, 12), gridspec_kw={'width_ratios': [1, 1, 1.2]})
-    # 绘制向量和热力图
+    
     for idx, (data, labels) in enumerate(zip(datasets, labels_list)):
-        plot_vectors_and_points_sub(axes[0, idx], data, labels)  # 第一行，为向量图
-        plot_heatmap(axes[1, idx], data, labels)  # 第二行，为热力图
+        plot_vectors_and_points_sub(axes[0, idx], data, labels)  
+        plot_heatmap(axes[1, idx], data, labels) 
         
-        # 添加列的底部标注
-        # 为每个子图添加底部标注
+       
         axes[0, idx].set_xlabel(f'({chr(97 + idx)})')
         axes[1, idx].set_xlabel(f'({chr(97 + idx)})')
 
 
-    # 添加整行的标题
+   
     # fig.suptitle("PCA Dimension Reduction and Cosine Similarity", fontsize=14, y=0.95)
     axes[0, 1].set_title("2-dimensional Configuration for Content Dimensions", pad=20)  # 第一行中部添加标题，并增加pad
-    axes[1, 1].set_title("Cosine Similarity Heatmap", pad=20)  # 第二行中部添加标题，并增加pad
-
-    plt.tight_layout(rect=[0, 0, 1, 0.95])  # 调整整体布局，避免重叠
-    plt.savefig('Integrating_SCM_SD/bin/doc/output/2-dimensional Configuration for content dimensions.png')
-    
+    axes[1, 1].set_title("Cosine Similarity Heatmap", pad=20) 
+    plt.tight_layout(rect=[0, 0, 1, 0.95])  
+    # plt.savefig('Integrating_SCM_SD/bin/doc/output/2-dimensional Configuration for content dimensions.png')
+    plt.savefig('Integrating_SCM_SD/bin/doc/output/dissertation/fig6.svg', format='svg')
     plt.show()
 
 if __name__ == "__main__":
@@ -220,8 +217,9 @@ if __name__ == "__main__":
    
     data = np.load(dimensionsVectors_path)
     task_list_all = ['Warmth','Competence','Communion','Agency','Evaluation','Potency','Activity']
-    drawHeatMap(data[0:6],task_list_all[0:6])
-    # dim_red_3()
-
-        
+    # fig3
+    # drawHeatMap(data[0:6],task_list_all[0:6])
+    dim_red_3(data)
+     
+    
     

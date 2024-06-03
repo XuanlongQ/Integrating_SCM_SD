@@ -1,3 +1,9 @@
+# -*- encoding: utf-8 -*-
+'''
+@file: study7.py
+@Author: Xuanlong
+@emaial: qxlpku@gmail.com
+''' 
 
 
 # Study 7 - Assessing the Feasibility of Model Integration

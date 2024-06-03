@@ -1,0 +1,96 @@
+groups = ['determined', 'practical', 
+          'industrious', 'intelligent', 
+          'unintelligent', 'skillful', 
+          'clumsy', 'cautious', 
+            'impulsive', 'warm', 
+            'cold', 'irritable',  
+            'humorous', 'humorless', 
+            'sociable', 'unsociable',
+            'popular', 'unpopular', 
+            'happy', 'unhappy', 
+            'imaginative', 'unimaginative', 
+            'reliable', 'unreliable', 
+            'honest','dishonest', 
+            'important', 'insignificant', 
+            'persistent', 'wavering', 
+            'foolish', 'shrewd', 
+            'critical', 'tolerant', 
+            'serious', 'frivolous', 
+            'vain', 'modest', 
+            'submissive', 'irresponsible', 
+            'sincere', 'helpful', 
+            'sentimental','naive', 
+            'scientific', 'discriminating', 
+            'squeamish', 'daring', 
+            'superficial', 'moody', 
+            'pessimistic', 'wasteful', 
+            'stern', 'finicky', 
+            'artistic', 'meditative', 
+            'dominating', 'boring', 
+            'reserved']
+
+groups_boarder = ['practical', 'industrious', 
+                  'intelligent', 'unintelligent',
+                  'skillful', 'clumsy', 
+                  'cautious', 'impulsive', 
+                  'warm', 'cold',  
+                  'humorous', 'humorless', 
+                  'sociable', 'unsociable',
+            'popular', 'happy',  
+            'imaginative', 'unimaginative', 
+            'reliable', 'unreliable', 
+            'dishonest', 'important', 
+            'insignificant',  'wavering',  
+            'tolerant', 'serious',  
+            'modest', 'irresponsible',
+            'sincere', 'helpful', 
+            'sentimental','squeamish', 
+            'superficial',  'wasteful', 
+            'artistic', 'meditative',
+            'dominating', 'boring',
+            'unpopular']
+
+SCM_HW_HC = ['reliable','reserved',
+             'artistic', 'meditative',
+             'practical', 'important','industrious', 
+             'cautious', 'serious','discriminating','intelligent',
+             'skillful', 'imaginative','scientific', 'determined'  ]
+
+# 'naive','submissive'
+SCM_HW_LC = ['honest','modest',
+             'tolerant','helpful',
+             'sincere','sentimental'
+             ,'humorous','good natured','happy','popular','sociable','warm']
+
+# 'daring','persistent','unhappy','scientific','determined'
+SCM_LW_HC = ['stern','critical',
+             'dominating','cold',
+             'unsociable','humorless',
+             'unpopular','pessimistic',
+             'irritable','moody','shrewd'
+             ]
+
+# 'unhappy','naive','submissive',
+SCM_LW_LC = ['vain','finicky',
+             'boring','unimaginative',
+             'dishonest', 'insignificant',
+             'superficial','squeamish',
+             'unintelligent', 'clumsy', 
+             'impulsive',
+             'foolish','frivolous', 
+             'wasteful','wavering',
+             'irresponsible', 'impulsive']
+                      
+# honest,unhappy
+Good_intellectural = ['reliable','reserved','daring'
+             'artistic', 'meditative', 'practical','cautious', 'serious','discriminating','intelligent','important',
+             'imaginative','industrious','skifull','determinded','scientific','persistent','shrewd','critical','stern',
+             'dominating','cold','unsociable','humorless','pessimistic','irritable','moody','unpopular','unsociable'
+  ]
+
+# determined,scientific,persistent,discriminating,daring,naive,submissive
+Good_soical = ['warm','sociable','good natured','popular','happy','humorous','sentimental','sincere'
+               'helpful','tolerant','modest','honest','reliable',
+               'reserved','artistic','meditative','cautious','practical','important','serious','intelligent','industrious',
+               'skillful'
+               ]

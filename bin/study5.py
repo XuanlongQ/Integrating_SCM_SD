@@ -86,8 +86,8 @@ def calculate_optimal_clusters(df, max_clusters=10):
     plt.title('Elbow Method For Optimal k')
     plt.grid(True)
     # plt.savefig('Integrating_SCM_SD/bin/doc/output/cluster/elbow_plot_3groups.png')
-    plt.savefig('Integrating_SCM_SD/bin/doc/output/cluster/elbow_plot_2groups.png')
-
+    # plt.savefig('Integrating_SCM_SD/bin/doc/output/cluster/elbow_plot_2groups.png')
+    plt.savefig('Integrating_SCM_SD/bin/doc/output/dissertation/fig4.svg', format='svg')
     plt.show()
 
 def cluster_and_plot(df, n_clusters):
@@ -135,6 +135,7 @@ def cluster_and_plot(df, n_clusters):
     plt.ylabel('Y Coordinate')
     plt.legend()
     plt.grid(True)
+    plt.savefig('Integrating_SCM_SD/bin/doc/output/dissertation/fig5.svg', format='svg')
     # plt.savefig('Integrating_SCM_SD/bin/doc/output/cluster/3groups.png')
     # plt.savefig('Integrating_SCM_SD/bin/doc/output/cluster/2groups.png')
     plt.show()
@@ -168,7 +169,7 @@ if __name__ == '__main__':
     cluster_and_plot(df_filtered,2)
     
     ### combining agency and competence
-    ##df_combinging = generate_combing_agency_competence(df_filtered)
+    # df_combinging = generate_combing_agency_competence(df_filtered)
     # unwanted_classifications = ['competent_pairs', 'agency_pairs']
     # df_filtered_2 = df_combinging[~df_combinging['task'].isin(unwanted_classifications)].copy()
     # cluster_and_plot(df_filtered_2,2)
