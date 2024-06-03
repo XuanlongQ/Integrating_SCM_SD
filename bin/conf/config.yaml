@@ -1,53 +1,4 @@
-SCM:
-  warmth_pairs: "Integrating_SCM_SD/bin/doc/original_pairs/SCM_warmth_paris.csv" # system
-  competent_pairs: "Integrating_SCM_SD/bin/doc/original_pairs/SCM_competent_pairs.csv" # system
-  All_pairs: "Integrating_SCM_SD/bin/doc/SCM_all_pairs.csv"
-  warmth_pairs_contrusting: "Integrating_SCM_SD/bin/doc/original_pairs/SCM_warmth_contrusting.csv"
-  competent_pairs_contrusting: "Integrating_SCM_SD/bin/doc/original_pairs/SCM_competent_contrusting.csv"
-  scm_competent_mce: "Integrating_SCM_SD/bin/output/contrusting_pairs_mce/scm_competent_mce.csv"
-  scm_warmth_mce: "Integrating_SCM_SD/bin/output/contrusting_pairs_mce/scm_warm_mce.csv"
-SD:
-  activity: "Integrating_SCM_SD/bin/doc/original_pairs/osgood_activity.csv"
-  evaluation: "Integrating_SCM_SD/bin/doc/original_pairs/osgood_evaluation.csv"
-  potency: "Integrating_SCM_SD/bin/doc/original_pairs/osgood_potency.csv"
-  
-
-Jenkins:
-  pairs: "Integrating_SCM_SD/bin/doc/Jenkins_pairs.csv"
-
-Osgood:
-  50_pairs: "Integrating_SCM_SD/bin/doc/osgood_50.csv"
-
-Trust:
-  20_paris: "Integrating_SCM_SD/bin/doc/original_pairs/trustworthiness.csv"
-
-Reduction:
-  SCM_warmth: "Integrating_SCM_SD/bin/doc/reduction_pairs/scm_warmth.csv"
-  SCM_competent: "Integrating_SCM_SD/bin/doc/reduction_pairs/scm_competent.csv"
-  Osgood_evaluation: "Integrating_SCM_SD/bin/doc/reduction_pairs/osgood_evaluation.csv"
-  Osgood_potency: "Integrating_SCM_SD/bin/doc/reduction_pairs/osgood_potency.csv"
-  Osgood_activity: "Integrating_SCM_SD/bin/doc/reduction_pairs/osgood_activity.csv"
-  Trustworthy: "Integrating_SCM_SD/bin/doc/reduction_pairs/trustworthy.csv"
-
-Dir:
-  original_pairs: "Integrating_SCM_SD/bin/doc/original_pairs/"
-  reduction_pairs: "Integrating_SCM_SD/bin/doc/reduction_pairs/"
-
-GPT:
-  warmth_pairs: "Integrating_SCM_SD/bin/doc/gpt_pairs/gpt_warmth.csv"
-  competent_pairs: "Integrating_SCM_SD/bin/doc/gpt_pairs/gpt_competent.csv"
-
-Mixed:
-  warmth_pairs: "Integrating_SCM_SD/bin/doc/final_pairs/mixed_warmth.csv"
-  competent_pairs: "Integrating_SCM_SD/bin/doc/final_pairs/mixed_competent.csv"
-  
-Model_path:
-  mce: "word_embeddings/mce_vectors.txt"
-  google_news: "word_embeddings/GoogleNews-vectors-negative300.bin"
-  glove: "word_embeddings/glove.840B.300d.txt"
-  fasttext: "word_embeddings/crawl-300d-2M-subword.bin"
-
-# the original pairs for each dimension
+# the seed words for each dimension
 word_pairs:
   warmth_pairs: "Integrating_SCM_SD/bin/doc/seed_words/warmth.csv"
   competent_pairs: "Integrating_SCM_SD/bin/doc/seed_words/competence.csv"
@@ -67,7 +18,36 @@ contrasting_pairs:
   evaluation_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/evaluation_contrasting.csv"
   potency_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/potency_contrasting.csv"
   activity_pairs: "Integrating_SCM_SD/bin/doc/contrasting_pairs/activity_contrasting.csv"
-  
 
+indirect_pairs:
+  warmth_pairs: "Integrating_SCM_SD/bin/doc/indirect_pairs/warmth_indirect.csv"
+  competent_pairs: "Integrating_SCM_SD/bin/doc/indirect_pairs/competence_indirect.csv"
+  communion_pairs: "Integrating_SCM_SD/bin/doc/indirect_pairs/communion_indirect.csv"
+  agency_pairs: "Integrating_SCM_SD/bin/doc/indirect_pairs/agency_indirect.csv"
 
+# the path for drawing the figure
+pics:
+  dimensionsVectors_googlenews: "Integrating_SCM_SD/bin/doc/output/dimensions.npy"
+  dimensionsVectors_fasttext: "Integrating_SCM_SD/bin/doc/output/dimensions_fasttext.npy"
+  dimensionsVectors_indirect: "Integrating_SCM_SD/bin/output/dimensions_indirect_DPM.npy"
+  heatmap: "Integrating_SCM_SD/bin/doc/output/heatmap.png"
+  quadrant: "Integrating_SCM_SD/bin/doc/output/quadrant.png"
+
+# model path
+model_path:
+  mce: "word_embeddings/mce_vectors.txt"
+  google_news: "word_embeddings/GoogleNews-vectors-negative300.bin"
+  glove: "word_embeddings/glove.840B.300d.txt"
+  fasttext: "word_embeddings/crawl-300d-2M-subword.bin"
+
+# the path for the output of the model
+model_path_output:
+  SCM_google_news: "word_embeddings/SCM_2D.bin"
+  DPM_google_news: "word_embeddings/DPM_2D.bin"
+  SD_google_news: "word_embeddings/SD_2D.bin"
+  New2_google_news: "word_embeddings/New2_2D.bin"
+  DPM_google_news_indirect: "word_embeddings/DPM_2D_indirect.bin"
+
+dimensionsAll:
+  allPairs: "Integrating_SCM_SD/bin/doc/output/all_data.pkl"
 
