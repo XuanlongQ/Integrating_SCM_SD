@@ -1,5 +1,6 @@
 # Integrating_SCM_SD
-This repository for replicate the paper "Big Two" Embeddings. 
+This repository for replicate the paper,[Embedding Social Perception Dimensions in a Semantic Space: Toward a Quantitative Synthesis](https://ieeexplore.ieee.org/abstract/document/11060602).
+
 
 The more details are as follow, 
 
