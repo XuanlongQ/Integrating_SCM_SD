@@ -23,7 +23,7 @@ Basically, this project involve two parts and one illustrative study
 - Part 2: The theoretical synthesis of three social evaluation models (The SSCR paper)
 - Illustrative study: the application of the methodology framework.
 
-Even though this project is divided by two papers, the whole logic is coherent. 
+Even though this project is divided by two papers, the whole logic is coherent. Meanswhile, considering some datset is too much big, I have uploaded those raw dataset onto [OSF](https://osf.io/8g7fy/overview). In this Github  mainly focuses on algorithm logic.
 
 ---
 
