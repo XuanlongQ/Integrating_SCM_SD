@@ -46,6 +46,7 @@ model_path_output:
   DPM_google_news: "word_embeddings/DPM_2D.bin"
   SD_google_news: "word_embeddings/SD_2D.bin"
   New2_google_news: "word_embeddings/New2_2D.bin"
+  New2_google_news_nonOrth: "word_embeddings/New2_2D_nonOrth.bin"
   DPM_google_news_indirect: "word_embeddings/DPM_2D_indirect.bin"
 
 dimensionsAll:

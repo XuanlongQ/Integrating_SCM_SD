@@ -70,34 +70,58 @@ def project2D_orthogonal(dim_a,dim_b,word_embeddings = 'word2vec'):
     else:
         print("The word embeddings is not supported")
 
+def project2D(dim_a,dim_b,word_embeddings = 'word2vec'):
+    # define the dimensions - Non-orthogonal
+    dimsOrth = np.vstack((dim_a,dim_b))
+    print(dimsOrth.shape)
     
+    # project the word embeddings to the bias dimensions
+    if word_embeddings == 'word2vec':
+        model_path = get_file_path(config_file,["model_path","google_news"]) 
+        model_output_path = get_file_path(config_file,["model_path_output","New2_google_news_nonOrth"])
+        
+        import gensim    
+        model = gensim.models.KeyedVectors.load_word2vec_format(model_path,binary=True)
+        
+        curr_antonmy_vector = np.linalg.pinv(np.transpose(dimsOrth))   
+        vocab_list = model.index_to_key
+
+        for each_word in vocab_list:
+            new_vector = np.matmul(curr_antonmy_vector,model[each_word])
+            new_vector = new_vector/np.linalg.norm(new_vector)
+            
+            with open(model_output_path,'a+',encoding='utf-8') as f:
+                f.write(each_word + ',' + str(new_vector[0]) + ',' + str(new_vector[1]) + '\n')
+                f.close()
+    else:
+        print("The word embeddings is not supported")
+      
 
 if __name__ == "__main__":
-    # task_list = ['warmth_pairs','competent_pairs','communion_pairs','agency_pairs','evaluation_pairs','potency_pairs','activity_pairs']
-    task_list = ['communion_pairs','agency_pairs']
-    dimensionsVectors_path = get_file_path(config_file,["pics","dimensionsVectors_indirect"])
+    task_list = ['warmth_pairs','competent_pairs','communion_pairs','agency_pairs','evaluation_pairs','potency_pairs','activity_pairs']
+    # task_list = ['communion_pairs','agency_pairs']
+    dimensionsVectors_path = get_file_path(config_file,["pics","dimensionsVectors_googlenews"])
     print(dimensionsVectors_path)
     
     data = np.load(dimensionsVectors_path)
     
     print(data.shape,len(data),type(data))
-    print(data[0])
-    # warmDim = data[0]
-    # compeDim = data[1]
-    # commDim = data[2]
-    # agenDim = data[3]
-    # evalDim = data[4]
-    # potenDim = data[5]
-    # actDim = data[6]
+
+    # warmDim = data[0],compeDim = data[1], commDim = data[2], agenDim = data[3], evalDim = data[4], potenDim = data[5], actDim = data[6]
     
+    # SCM
     # project_warmth_competent = np.vstack((warmDim,compeDim))
+    # DPM
     # project_communion_agency = np.vstack((commDim,agenDim))
+    # SD     
     # project_evaluation_potency = np.vstack((evalDim,potenDim))
     
-    # warm_comm = np.mean(data[[0, 2, 4]], axis=0)
-    # compe_agen = np.mean(data[[1, 3]], axis=0)
+    # New "Big Two" Embeddings - 'WCE' and 'CA'
+    warm_comm_eva = np.mean(data[[0, 2, 4]], axis=0)
+    compe_agen = np.mean(data[[1, 3]], axis=0)
     
-    project2D_orthogonal(data[0],data[1])
+    # project2D_orthogonal(data[0],data[1])
+    project2D(warm_comm_eva,compe_agen)
     
     
     

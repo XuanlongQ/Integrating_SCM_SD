@@ -92,6 +92,8 @@ if __name__ == "__main__":
     average_w_c_e = np.mean(data[[0, 2, 4]], axis=0)
     average_a_c = np.mean(data[[1, 3]], axis=0)
     
+    newBt = cosine_similarity(average_w_c_e, average_a_c)
+    print("the similarity betwwen WCE an CA is:",newBt)
     # print("Average of the 1st, 3rd, and 5th rows:")
     # print(average_w_c_e)
     # print("\nAverage of the 2nd and 4th rows:")
@@ -101,8 +103,13 @@ if __name__ == "__main__":
     df = pd.read_pickle(file_path)
     df['rp_word_pairs'] = df['rp_word_0'] + '_' + df['rp_word_1']
     
-    top_30_words = find_top_unique_similar_words(df, average_a_c)
+    top_30_words_ca = find_top_unique_similar_words(df, average_a_c)
+    top_30_words_wce = find_top_unique_similar_words(df, average_w_c_e)
+
     # top_30_words.to_csv('wce_top30.csv', index=False)
-    top_30_words.to_csv('ac_top30.csv', index=False)
-    print(top_30_words)
+    # top_30_words.to_csv('ac_top30.csv', index=False)
+    print(top_30_words_ca)
+    print(50*'-')
+    print(top_30_words_wce)
+    
 

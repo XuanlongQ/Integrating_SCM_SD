@@ -44,12 +44,13 @@ def fig_1():
     plt.savefig('Integrating_SCM_SD/bin/doc/output/dissertation/fig1.svg', format='svg')
     plt.show()
     
+
+
 def fig_3():
     import numpy as np
     import matplotlib.pyplot as plt
     from sklearn.metrics.pairwise import cosine_similarity
     import seaborn as sns
-
     dimensionsVectors_path = "Integrating_SCM_SD/bin/doc/output/dimensions.npy"
     data_all = np.load(dimensionsVectors_path)
     data = data_all[0:6]
@@ -57,14 +58,17 @@ def fig_3():
 
     cosine_matrix = cosine_similarity(data)
 
+    # Create a mask to display only half of the heatmap
+    mask = np.tri(cosine_matrix.shape[0], k=-1).T
 
-    plt.figure(figsize=(8, 6))  
-    sns.heatmap(cosine_matrix, annot=True, fmt=".2f", cmap='Blues', 
+    plt.figure(figsize=(8, 6))
+    sns.heatmap(cosine_matrix, annot=True, fmt=".2f", cmap='Blues', mask=mask,
                 xticklabels=labels, yticklabels=labels)
     plt.tick_params(axis='x', rotation=45)
-    plt.title("Cosine Similarity Matrix of Social Perception Dimensions",pad=20)
+    plt.title("Cosine Similarity Matrix of Social Perception Dimensions", pad=20)
     plt.tight_layout()
     plt.savefig('Integrating_SCM_SD/bin/doc/output/dissertation/fig3.svg', format='svg')
     plt.show()
+
     
 fig_3()

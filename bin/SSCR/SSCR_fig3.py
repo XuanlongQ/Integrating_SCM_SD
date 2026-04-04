@@ -13,7 +13,6 @@
 import yaml
 import numpy as np
 import matplotlib.pyplot as plt
-
 from sklearn.metrics.pairwise import cosine_similarity
 import seaborn as sns
 
@@ -43,10 +42,6 @@ def get_file_path(yaml_file, keys):
             print("Type error, possibly due to incorrect keys:", exc)
     except Exception as exc:
             print("Error occurred:", exc)
-
-
-import numpy as np
-from scipy.spatial.distance import euclidean
 
 def drawHeatMap(dimensionsSP,tasklist):
     """_summary_
@@ -88,8 +83,17 @@ def dimensionReduction(dimensionsSP):
     from sklearn.decomposition import PCA
     pca = PCA(n_components=2)
     dimensionsSP_reduced = pca.fit_transform(dimensionsSP)
+    # calculate the eigenvalues
+    explained_variance = pca.explained_variance_ratio_
+    eigenvalues = pca.explained_variance_
+    
+    print("Eigenvalues:", eigenvalues)
+    print("Explained variance by each component:", explained_variance) 
+    
+
     print("Reduced data shape:", dimensionsSP_reduced.shape) 
     print("Reduced data:", dimensionsSP_reduced)
+   
     return dimensionsSP_reduced
 
 def plot_vectors_and_points(data, labels):
@@ -124,43 +128,27 @@ def plot_vectors_and_points(data, labels):
     
     # plt.show()
 
-def plot_vectors_and_points_sub(ax, data, labels, show_grid=True):
-    """
-    在指定的Axes上绘制向量和点。
-    
-    :param ax: matplotlib的Axes对象，用于绘制图形。
-    :param data: 数据集，应该是二维或更高维度的数据。
-    :param labels: 数据点的标签。
-    :param show_grid: 是否显示网格，默认为True。
-    """
-
-    # 进行降维
+def plot_vectors_and_points_sub(ax, data, labels,subplot_label, show_grid=True):
+    """Plot reduced dimension vectors and points."""
     dimensions_reduced = dimensionReduction(data)
-    
-    # 对于数据集中的每一个点
     for point, label in zip(dimensions_reduced, labels):
-        # 画点
-        ax.plot(point[0], point[1], 'o')  # 'o' 是点的标记
-        # 画向量
+        ax.plot(point[0], point[1], 'o')
         ax.quiver(0, 0, point[0], point[1], angles='xy', scale_units='xy', scale=1, color='r')
-        # 添加标签
         ax.text(point[0], point[1], f' {label}', color='blue', fontsize=8, ha='right', va='bottom')
-
-    # 设置图的范围
-    # max_val = np.max(np.abs(dimensions_reduced)) + 1
-    # ax.set_xlim(-1, max_val)
-    # ax.set_ylim(-1, max_val)
     ax.set_xlim(-1.0, 1.0)
     ax.set_ylim(-0.75, 0.75)
-    ax.axhline(y=0, color='k')  # 横轴
-    ax.axvline(x=0, color='k')  # 纵轴
-    # ax.set_title("2-dimensional Configuration for Content Dimensions")
-    # 是否显示网格
+    ax.axhline(y=0, color='k')
+    ax.axvline(x=0, color='k')
     if show_grid:
         ax.grid(True)
+    # Set the labels for the axes
+    ax.set_xlabel("PCA 1")  # Label for the x-axis
+    ax.set_ylabel("PCA 2")  # Label for the y-axis
+    ax.set_title(subplot_label, loc='center', y=-0.2, fontsize=12)
+
+
         
 def plot_heatmap(ax, data, labels):
-    """ 在指定的Axes上绘制热力图，并添加标签。"""
     dimensions_reduced = dimensionReduction(data)
     cosine_matrix = cosine_similarity(dimensions_reduced)
     
@@ -174,37 +162,28 @@ def dim_red_3(data):
     data_no_activity = data[0:6]
     task_list = ['Warmth','Competence','Communion','Agency','Evaluation','Potency']
     
-    print(data_no_activity
-          ,len(data_no_activity),type(data_no_activity))
+    print(data_no_activity,len(data_no_activity),type(data_no_activity))
     
     data_no_SD = data[0:4]
     task_list_no_SD = ['Warmth','Competence','Communion','Agency']
 
-    print(data_no_SD
-          ,len(data_no_SD),type(data_no_SD))
+    print(data_no_SD,len(data_no_SD),type(data_no_SD))
     
-   
-    datasets =[data, data_no_activity, data_no_SD]
-    labels_list = [task_list_all, task_list, task_list_no_SD]
+    datasets =[data_no_SD, data_no_activity, data  ]
+    labels_list = [task_list_no_SD, task_list, task_list_all]
 
-    fig, axes = plt.subplots(2, len(datasets), figsize=(5 * len(datasets), 9))
-    # fig, axes = plt.subplots(2, 3, figsize=(18, 12), gridspec_kw={'width_ratios': [1, 1, 1.2]})
-    
-    for idx, (data, labels) in enumerate(zip(datasets, labels_list)):
-        plot_vectors_and_points_sub(axes[0, idx], data, labels)  
-        plot_heatmap(axes[1, idx], data, labels) 
+    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+    subplot_labels = ['(a)', '(b)', '(c)']  # 子图标签列表
+
+
         
-       
-        axes[0, idx].set_xlabel(f'({chr(97 + idx)})')
-        axes[1, idx].set_xlabel(f'({chr(97 + idx)})')
+     # 使用 enumerate 来迭代子图索引和数据
+    for idx, (dataset, labels) in enumerate(zip(datasets, labels_list)):
+        subplot_label = subplot_labels[idx]
+        plot_vectors_and_points_sub(axes[idx], dataset, labels, subplot_label)
 
-
-   
-    # fig.suptitle("PCA Dimension Reduction and Cosine Similarity", fontsize=14, y=0.95)
-    axes[0, 1].set_title("2-dimensional Configuration for Content Dimensions", pad=20)  # 第一行中部添加标题，并增加pad
-    axes[1, 1].set_title("Cosine Similarity Heatmap", pad=20) 
-    plt.tight_layout(rect=[0, 0, 1, 0.95])  
-    # plt.savefig('Integrating_SCM_SD/bin/doc/output/2-dimensional Configuration for content dimensions.png')
+    # fig.suptitle('Projecting Content Dimensions of Social Perception Models on Two-dimensional PCA Space', fontsize=16, color='black')
+    plt.tight_layout() 
     plt.savefig('Integrating_SCM_SD/bin/doc/output/dissertation/fig6.svg', format='svg')
     plt.show()
 
@@ -213,12 +192,14 @@ if __name__ == "__main__":
     # draw_figure(study)
     dimensionsVectors_path = get_file_path(config_file,["pics","dimensionsVectors_googlenews"])
     heatmap_path = get_file_path(config_file,["pics","heatmap"])
-    # quadrant_path = get_file_path(config_file,["pics","quadrant"])
    
     data = np.load(dimensionsVectors_path)
     task_list_all = ['Warmth','Competence','Communion','Agency','Evaluation','Potency','Activity']
-    # fig3
+    # write to csv 
+    # np.savetxt("Integrating_SCM_SD/bin/doc/output/dissertation/data.csv", data, delimiter=",")
+    # JSC Figure 4 and SSCR Figure 2
     # drawHeatMap(data[0:6],task_list_all[0:6])
+    # SSCR Figure 3
     dim_red_3(data)
      
     
