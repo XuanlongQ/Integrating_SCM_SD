@@ -14,6 +14,8 @@ and paper
 > Xuanlong QIN, Tony TAM 
 > Social Science Computer Review, 2025
 
+Paper link: [link](https://journals.sagepub.com/doi/10.1177/08944393261437640)
+
 **Primary Maintainer:** Xuanlong QIN
 
 This repository contains the code, experiments, and instructions to reproduce the results presented in the papers.
